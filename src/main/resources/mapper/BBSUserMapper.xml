@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.youngsay.food.mapper.UserMapper" >
+
+    <insert id="insert" >
+        insert into userinfo(login_name,username,password) values(
+            #{loginName},#{username},#{password})
+    </insert>
+    <!--根据loginname查找userinfo-->
+    <select id="selectByLoginName" resultType="cn.youngsay.food.model.UserInfo">
+        select * from userinfo where login_name = #{loginName}
+    </select>
+    <!--根据uid查找userinfo-->
+    <select id="selectByUid" resultType="cn.youngsay.food.model.UserInfo">
+        select * from userinfo where uid = #{uid}
+    </select>
+
+    <!--根据uid修改个人信息-->
+    <update id="update">
+        update userinfo
+        <set>
+            <if test="username!=null and username!=''">
+                username = #{username},
+            </if>
+            <if test="password!=null and password !=''" >
+                password = #{password},
+            </if>
+            <if test="head!=null and head!=''">
+                head = #{head}
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+
+</mapper>

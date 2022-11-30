@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.youngsay.food.mapper.DiscussMapper" >
+
+    <insert id="submit">
+        insert into discuss(title,score,content,uid) values(#{title},#{score},#{content},#{uid})
+    </insert>
+
+    <!--首页展示6条数据-->
+    <select id="headList" resultType="cn.youngsay.food.model.Discuss">
+        select * from discuss order by create_time desc limit 6
+    </select>
+
+    <select id="queryList" resultType="cn.youngsay.food.model.Discuss">
+        select * from discuss
+        <where>
+            <if test="title!=null">
+                and title like concat('%',#{title},'%')
+            </if>
+            <if test="score!=null and score!=4">
+                and score &gt;= #{score}
+            </if>
+            <if test="score!=null and score==4">
+                and score &lt;= #{score}
+            </if>
+        </where>
+        limit #{limit} offset #{offset}
+    </select>
+    <!--获取条件查询总数-->
+    <select id="queryCount" resultType="java.lang.Integer">
+        select count(*) from discuss
+        <where>
+            <if test="title!=null">
+                and title like concat('%',#{title},'%')
+            </if>
+            <if test="score!=null and score!=4">
+                and score &gt;= #{score}
+            </if>
+            <if test="score!=null and score==4">
+                and score &lt;= #{score}
+            </if>
+        </where>
+    </select>
+
+    <select id="getListByUid" resultType="cn.youngsay.food.model.Discuss">
+        select * from discuss where uid = #{uid}
+    </select>
+</mapper>
