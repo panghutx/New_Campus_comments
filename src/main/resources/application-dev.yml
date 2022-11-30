@@ -1,0 +1,14 @@
+spring:
+    datasource:
+        url: jdbc:mysql://127.0.0.1/bbs?characterEncoding=utf8
+        username: root
+        password: zzzzzz
+        driver-class-name: com.mysql.cj.jdbc.Driver
+url:
+#    img: D:\download\food\src\main\resources\static\images\
+    img: https://panghu-1256092140.cos.ap-beijing.myqcloud.com/
+
+cos:
+    bucketName:
+    secretId:
+    secretKey:

@@ -1,0 +1,17 @@
+# ????????
+# ???????????
+spring:
+  profiles:
+    active: dev
+# ?? Mybatis ? xml ????
+mybatis:
+  mapper-locations: classpath:mapper/**Mapper.xml
+  configuration: # ???? MyBatis ??? SQL
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# ???? MyBatis ??? SQL
+logging:
+  level:
+    cn:
+      youngsay:
+        food: debug

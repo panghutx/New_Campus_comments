@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1/food?characterEncoding=utf8
+    username: food
+    password: Z4MnhjtRw8PFDBBF
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# 腾讯云地址
+url:
+  img: https://panghu-1256092140.cos.ap-beijing.myqcloud.com/
+
